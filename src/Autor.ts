@@ -1,4 +1,4 @@
-class Autor{
+class Autorx{
     private _id:Number
     private _imie:string
     private _nazwisko:string

@@ -1,5 +1,4 @@
-{
-"data": [
+{ "data": [
   {
     "imie":"Janusz",
     "nazwisko": "Pawlacz",
@@ -15,5 +14,4 @@
     "nazwisko": "Pawlacz",
     "email": "janpaw@trzy.pl"
   }
-]
-}
+] }
