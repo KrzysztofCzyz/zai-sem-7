@@ -7,6 +7,7 @@ class Tree{
     }
 }
 
+// akcje to funkcje np.
 function xsss(val){
     console.log(val)
 }
