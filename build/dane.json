@@ -1,0 +1,19 @@
+{
+"data": [
+  {
+    "imie":"Janusz",
+    "nazwisko": "Pawlacz",
+    "email": "janpaw@raz.pl"
+  },
+  {
+    "imie":"Janusz",
+    "nazwisko": "Pawlacz",
+    "email": "janpaw@dwa.pl"
+  },
+  {
+    "imie":"Janusz",
+    "nazwisko": "Pawlacz",
+    "email": "janpaw@trzy.pl"
+  }
+]
+}
