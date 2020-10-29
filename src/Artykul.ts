@@ -6,9 +6,16 @@ class Artykul{
     private _komentarze: Komentarz[]
     public get tytul() {return this._tytul}
     public get tresc() {return this._tresc}
-    constructor(tytul:string, tresc:string) {
+    public static create(tytul:string, tresc:string) {
+        if (tytul != ""){
+            return new Artykul(tytul,tresc,new Date())
+        }
+        else return undefined;
+    }
+    private constructor(tytul:string, tresc:string, data:Date) {
         this._tytul = tytul
         this._tresc = tresc
+        this._dataUtworzenia = data
     }
     public dodajKomentarz(komentarz:Komentarz){
         this._komentarze.push(komentarz)

@@ -5,7 +5,13 @@ class Blog{
     private _artykuly:Artykul[]
     public get nazwa(){return this._nazwa}
     public get autor(){return this._autor}
-    constructor(nazwa:string, autor:Autor) {
+    public static create(nazwa:string, autor:Autor) {
+        if (nazwa != "" && autor != undefined){
+            return new Blog(nazwa,autor);
+        }
+        else return undefined;
+    }
+    private constructor(nazwa:string, autor:Autor) {
         this._autor=autor
         this._nazwa=nazwa
     }
