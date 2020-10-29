@@ -25,15 +25,18 @@ class AutorFetcher{
     constructor() {
         this.data = []
     }
-    public execute(filename:string) {
+    public execute(filename:string, publisher:IPublisher) {
         fetch(filename)
             .then(o => o.json())
             .then(d => d.data.forEach(a => this.data.push(Autor.create(a.imie, a.nazwisko, a.email))))
-            .finally(() => new AutorPublisher().publish(this.data))}
+            .finally(() => publisher.publish(this.data))}
 
 }
+interface IPublisher{
+    publish(data:Autor[]):void;
+}
 
-class AutorPublisher{
+class UlPublisher implements IPublisher {
     public list
 
     constructor() {
@@ -46,5 +49,57 @@ class AutorPublisher{
     }
 }
 
-let x = new AutorFetcher()
-x.execute("dane.json")
+class OlPublisher implements IPublisher {
+    public list
+
+    constructor() {
+        this.list = document.createElement("ol")
+        document.getElementById('body').appendChild(this.list)
+    }
+
+    public publish(data){
+        data.forEach(d => {let x = document.createElement("li");x.innerText=d.imie+" "+d.nazwisko+" "+d.email;this.list.appendChild(x)})
+    }
+}
+
+class TablePublisher implements IPublisher {
+    public list
+
+    constructor() {
+        this.list = document.createElement("table")
+        document.getElementById('body').appendChild(this.list)
+    }
+
+    public publish(data){
+        data.forEach(d => {
+            let x = document.createElement("tr");
+            let y1 = document.createElement("td");
+            y1.innerText=d.imie;
+            let y2 = document.createElement("td");
+            y2.innerText=d.nazwisko;
+            let y3 = document.createElement("td");
+            y3.innerText=d.email;
+            x.appendChild(y1);
+            x.appendChild(y2);
+            x.appendChild(y3);
+            this.list.appendChild(x);
+
+        })
+    }
+}
+
+document.getElementById("go").addEventListener("click", function (){
+    let xs = new AutorFetcher()
+    let sel:HTMLSelectElement = <HTMLSelectElement> document.getElementById("pub")
+    let val = sel.value
+    if (val == "1"){
+        xs.execute("dane.json", new UlPublisher())
+    }
+    else if (val == "1"){
+        xs.execute("dane.json", new OlPublisher())
+    }
+    else {
+        xs.execute("dane.json", new TablePublisher())
+    }
+
+})
