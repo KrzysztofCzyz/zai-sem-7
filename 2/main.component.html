@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-6">
+        <button 
+            class="btn btn-primary"
+            (click)="showImie()"
+        >Poka imie</button>
+        <button (click)="style1()">20px</button>
+        <button (click)="style2()">Grn str</button>
+    </div>
+    <p [ngClass]="styl" >{{imie}}</p>
+</div>

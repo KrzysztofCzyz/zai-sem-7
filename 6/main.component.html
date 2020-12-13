@@ -1,0 +1,8 @@
+<p [ngClass]="styl"> JAKIS TEKST</p>
+<div  class="row">
+    <div  class="col-6">
+        <ul>
+            <li *ngFor="let i of strlist"><button (click)="changeStyle(i)">{{i}}</button></li>
+        </ul>
+    </div>
+</div>

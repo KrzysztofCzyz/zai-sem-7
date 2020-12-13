@@ -1,0 +1,10 @@
+<section>
+    <ul class="list-group">
+        <li *ngFor="let task of tasks$|async" 
+             class="list-group-item list-group-item-action"
+             [class.active]="task==selectedTask"
+             (click)="selectTask(task)">
+            {{task.name}}
+        </li>
+    </ul>
+</section>
